@@ -6,7 +6,7 @@ import ProductDetails from "../components/Products/ProductDetails";
 import SuggestedProduct from "../components/Products/SuggestedProduct";
 import { useSelector } from "react-redux";
 
-const ProductDetailsPage = () => {
+const ProductDetailsPage = ({ updateProgress }) => {
   const { allProducts } = useSelector((state) => state.products);
   const { allEvents } = useSelector((state) => state.events);
   const { id } = useParams();
@@ -23,6 +23,13 @@ const ProductDetailsPage = () => {
       setData(data);
     }
   }, [allProducts, allEvents]);
+
+  useEffect(() => {
+    updateProgress(99);
+    setTimeout(()=>{
+      updateProgress(100);
+    }) // Set progress to 70%
+  }, []);
 
   return (
     <div>

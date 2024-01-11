@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createProduct } from "../../redux/actions/product";
 import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
+import { RxCross1 } from "react-icons/rx";
 
 const CreateProduct = () => {
   const { seller } = useSelector((state) => state.seller);
@@ -27,7 +28,7 @@ const CreateProduct = () => {
     }
     if (success) {
       toast.success("Product created successfully!");
-      navigate("/dashboard");
+      navigate("/dashboard-products");
       window.location.reload();
     }
   }, [dispatch, error, success]);
@@ -47,6 +48,12 @@ const CreateProduct = () => {
       };
       reader.readAsDataURL(file);
     });
+  };
+
+  const removeImage = (index) => {
+    const updatedImages = [...images];
+    updatedImages.splice(index, 1);
+    setImages(updatedImages);
   };
 
   const handleSubmit = (e) => {
@@ -94,6 +101,8 @@ const CreateProduct = () => {
             type="text"
             name="name"
             value={name}
+            required
+            autoFocus
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your product name..."
@@ -124,9 +133,10 @@ const CreateProduct = () => {
           <select
             className="w-full mt-2 border h-[35px] rounded-[5px]"
             value={category}
+            required
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="Choose a category">Choose a category</option>
+            <option value="">Choose a category</option>
             {categoriesData &&
               categoriesData.map((i) => (
                 <option value={i.title} key={i.title}>
@@ -168,6 +178,7 @@ const CreateProduct = () => {
             type="number"
             name="price"
             value={discountPrice}
+            required
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setDiscountPrice(e.target.value)}
             placeholder="Enter your product price with discount..."
@@ -182,6 +193,7 @@ const CreateProduct = () => {
             type="number"
             name="price"
             value={stock}
+            required
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setStock(e.target.value)}
             placeholder="Enter your product stock..."
@@ -198,20 +210,24 @@ const CreateProduct = () => {
             id="upload"
             className="hidden"
             multiple
+            required
             onChange={handleImageChange}
           />
           <div className="w-full flex items-center flex-wrap">
             <label htmlFor="upload">
-              <AiOutlinePlusCircle size={30} className="mt-3" color="#555" />
+              <AiOutlinePlusCircle size={30} className="mt-3 cursor-pointer" color="#555" />
             </label>
             {images &&
-              images.map((i) => (
-                <img
-                  src={i}
-                  key={i}
-                  alt=""
-                  className="h-[120px] w-[120px] object-cover m-2"
-                />
+              images.map((i,j) => (
+                <div className="relative" key={i}>
+                  <img
+                    src={i}
+                    key={i}
+                    alt=""
+                    className="h-[120px] w-[120px] object-cover m-2"
+                  />
+                  {/* <RxCross1 className="cursor-pointer absolute -top-1 -right-1" size={15}  onClick={() => removeImage(j)}/> */}
+                </div>
               ))}
           </div>
           <br />

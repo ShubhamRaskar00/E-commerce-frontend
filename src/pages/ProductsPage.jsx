@@ -7,7 +7,7 @@ import Loader from "../components/Layout/Loader";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
 import styles from "../styles/styles";
 
-const ProductsPage = () => {
+const ProductsPage = ({ updateProgress }) => {
   const [searchParams] = useSearchParams();
   const categoryData = searchParams.get("category");
   const {allProducts,isLoading} = useSelector((state) => state.products);
@@ -24,6 +24,13 @@ const ProductsPage = () => {
     }
     //    window.scrollTo(0,0);
   }, [allProducts]);
+
+  useEffect(() => {
+    updateProgress(99);
+    setTimeout(()=>{
+      updateProgress(100);
+    }) // Set progress to 70%
+  }, []);
 
   return (
   <>

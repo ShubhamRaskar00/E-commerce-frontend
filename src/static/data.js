@@ -194,7 +194,7 @@ export const navItems = [
       title: "Computers and Laptops",
       subTitle: "",
       image_Url:
-        "https://cdn.shopify.com/s/files/1/1706/9177/products/NEWAppleMacbookProwithM1ProChip14InchLaptop2021ModelMKGQ3LL_A_16GB_1TBSSD_custommacbd.jpg?v=1659592838",
+        "https://m.media-amazon.com/images/I/41nk9CwuPOL._SX300_SY300_QL70_FMwebp_.jpg",
     },
     {
       id: 2,
@@ -229,13 +229,13 @@ export const navItems = [
       title: "Gifts",
       subTitle: "",
       image_Url:
-        "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+        "https://cdn.pixabay.com/photo/2021/12/01/14/47/gifts-6838181_1280.png",
     },
     {
       id: 7,
       title: "Pet Care",
       subTitle: "",
-      image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
+      image_Url: "https://autumntrailsvet.com/wp-content/uploads/2020/04/We-care-for-many-kinds-of-animals.png",
     },
     {
       id: 8,

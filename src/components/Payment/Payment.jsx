@@ -97,6 +97,8 @@ const Payment = () => {
 
   const paymentData = {
     amount: Math.round(orderData?.totalPrice * 100),
+    customerName: user.name,
+    customerAddress: user.addresses,
   };
 
   const paymentHandler = async (e) => {
@@ -359,7 +361,7 @@ const PaymentInfo = ({
                     <PayPalScriptProvider
                       options={{
                         "client-id":
-                          "Aczac4Ry9_QA1t4c7TKH9UusH3RTe6onyICPoCToHG10kjlNdI-qwobbW9JAHzaRQwFMn2-k660853jn",
+                          "AbUFPGPJeifnTeOBEfv2MelKWUnfqctXbjrXZp_APXDZIDbTq-GMqGxwPW5Iga6JKKqZh6KzAoVa6w-L",
                       }}
                     >
                       <PayPalButtons

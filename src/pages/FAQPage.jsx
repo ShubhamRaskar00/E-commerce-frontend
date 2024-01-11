@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import styles from "../styles/styles";
 
-const FAQPage = () => {
+const FAQPage = ({ updateProgress }) => {
+  useEffect(() => {
+    updateProgress(99);
+    setTimeout(()=>{
+      updateProgress(100);
+    }) // Set progress to 70%
+  }, []);
   return (
     <div>
       <Header activeHeading={5} />

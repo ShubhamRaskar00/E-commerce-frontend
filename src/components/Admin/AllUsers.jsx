@@ -71,11 +71,14 @@ const AllUsers = () => {
       type: "number",
       sortable: false,
       renderCell: (params) => {
+        const isAdmin = params.row.role === 'Admin';
         return (
           <>
+          {!isAdmin && ( 
             <Button onClick={() => setUserId(params.id) || setOpen(true)}>
               <AiOutlineDelete size={20} />
             </Button>
+             )}
           </>
         );
       },

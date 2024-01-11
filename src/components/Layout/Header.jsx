@@ -64,14 +64,48 @@ const Header = ({ activeHeading }) => {
               />
             </Link>
           </div>
+          
+          
+        </div>
+      </div>
+      <div
+        className={`${
+          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
+        } transition hidden 800px:flex items-center justify-between w-full bg-[#0e0e0e] h-[70px]`}
+      >
+        <div
+          className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
+        >
+          {/* categories */}
+          <div onClick={() => setDropDown(!dropDown)}>
+            <div className="relative h-[60px] mt-[10px] w-[70px] hidden 1000px:block">
+              <BiMenuAltLeft size={30} className="absolute top-3 left-5 cursor-pointer" />
+              <button
+                className={`h-[100%] w-full flex justify-between items-center pl-8 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
+              >
+                
+              </button>
+              {/* <IoIosArrowDown
+                size={20}
+                className="absolute right-2 top-4 cursor-pointer"
+                onClick={() => setDropDown(!dropDown)}
+              /> */}
+              {dropDown ? (
+                <DropDown
+                  categoriesData={categoriesData}
+                  setDropDown={setDropDown}
+                />
+              ) : null}
+            </div>
+          </div>
           {/* search box */}
-          <div className="w-[50%] relative">
+          <div className="w-[30%] relative">
             <input
               type="text"
               placeholder="Search Product..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
+              className="h-[40px] w-full px-2 border-[#0e0e0e] border-[2px] rounded-md"
             />
             <AiOutlineSearch
               size={30}
@@ -97,50 +131,18 @@ const Header = ({ activeHeading }) => {
               </div>
             ) : null}
           </div>
-
-          <div className={`${styles.button}`}>
-            <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
-              <h1 className="text-[#fff] flex items-center">
-                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
-                <IoIosArrowForward className="ml-1" />
-              </h1>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div
-        className={`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-[#3321c8] h-[70px]`}
-      >
-        <div
-          className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
-        >
-          {/* categories */}
-          <div onClick={() => setDropDown(!dropDown)}>
-            <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block">
-              <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
-              <button
-                className={`h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
-              >
-                All Categories
-              </button>
-              <IoIosArrowDown
-                size={20}
-                className="absolute right-2 top-4 cursor-pointer"
-                onClick={() => setDropDown(!dropDown)}
-              />
-              {dropDown ? (
-                <DropDown
-                  categoriesData={categoriesData}
-                  setDropDown={setDropDown}
-                />
-              ) : null}
-            </div>
-          </div>
           {/* navitems */}
           <div className={`${styles.noramlFlex}`}>
             <Navbar active={activeHeading} />
+          </div>
+          {/* Seller btn */}
+          <div className={`${styles.button}`}>
+            <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
+              <h1 className="text-[#fff] flex items-center font-[500]">
+                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
+                {/* <IoIosArrowForward className="ml-1" /> */}
+              </h1>
+            </Link>
           </div>
 
           <div className="flex">
@@ -218,9 +220,10 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src="https://shubhamraskar00.github.io/img/Grey%20Minimalist%20Fashion%20Brand%20Logo.png"
                 alt=""
-                className="mt-3 cursor-pointer"
+                className="h-20 mt-3 cursor-pointer"
+  
               />
             </Link>
           </div>
